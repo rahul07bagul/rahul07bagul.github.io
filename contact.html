@@ -11,6 +11,43 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    	<script type="text/javascript">
+    	    (function() {
+    	        // https://dashboard.emailjs.com/admin/account
+    	        emailjs.init('dJMmEfKp__OmwIkGH');
+    	    })();
+    	</script>
+		<script type="text/javascript">
+			function sendMail() {
+				var params = {
+				  name: document.getElementById("demo-name").value,
+				  email: document.getElementById("demo-email").value,
+				  message: document.getElementById("demo-message").value,
+				};
+			  
+				const serviceID = "service_3vmtaoe";
+				const templateID = "template_xc8anvs";
+			  
+				  emailjs.send(serviceID, templateID, params)
+				  .then(res=>{
+					  document.getElementById("demo-name").value = "";
+					  document.getElementById("demo-email").value = "";
+					  document.getElementById("demo-message").value = "";
+					  console.log(res);
+					  alert("Your message sent successfully!!")
+			  
+				  })
+				  .catch(err=>console.log(err));
+			  
+			}
+
+			function reset(){
+				document.getElementById("demo-name").value = '';
+				document.getElementById("demo-email").value = '';
+				document.getElementById("demo-message").value = '';
+			}
+		</script>
 	</head>
 	<body class="is-preload">
 
@@ -48,7 +85,7 @@
 
 								<section>
 									<h4>Send a message</h4>
-									<form method="post" action="#">
+									<!--<form id="contact-form">-->
 										<div class="row gtr-uniform">
 											<div class="col-6 col-12-xsmall">
 												<input type="text" name="demo-name" id="demo-name" value="" placeholder="Name" />
@@ -61,12 +98,12 @@
 											</div>
 											<div class="col-12">
 												<ul class="actions">
-													<li><input type="submit" value="Send Message" class="primary" /></li>
-													<li><input type="reset" value="Reset" /></li>
+													<li><input type="submit" value="Send Message" class="primary" onclick="sendMail()"/></li>
+													<li><input type="reset" value="Reset" onclick="reset()"/></li>
 												</ul>
 											</div>
 										</div>
-									</form>
+									<!--</form>-->
 								</section>
 							</div>
 						</section>
