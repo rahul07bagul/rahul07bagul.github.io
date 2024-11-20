@@ -1,0 +1,36 @@
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .col {
+    flex: 1 1 calc(33.33% - 20px);
+    max-width: calc(33.33% - 20px);
+    box-sizing: border-box;
+  }
+  .card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+  .card-body {
+    padding: 15px;
+  }
+  .card-title {
+    font-size: 18px;
+    margin: 0 0 10px;
+  }
+  .card-subtitle {
+    font-size: 14px;
+    color: #666;
+    margin: 0 0 15px;
+  }
+  .card a {
+    text-decoration: none;
+    color: #007bff;
+  }
